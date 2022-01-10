@@ -1,5 +1,5 @@
 # V-Script-PY
-# Version: 1.1
+# Version: 1.15
 # Released: /
 
 from re import match
@@ -18,7 +18,7 @@ def OutputVersion(ReleaseName, ReleaseTag, IsReleased):
         "\nVersion: " + ReleaseTag +
         "\nReleased: " + strRelease + "\n"
         )
-    if ReleaseTag != "1.0":
+    if ReleaseTag != "1.15":
         print("You version of V-Script (PY) is outdated! \nPlease update to the latest version.")
         ReqUpdate()
 
@@ -51,35 +51,48 @@ class Utility:
     def ObjectCreator():
         name = ""
         type = ""
-        typeOpts = 0
+        typeOpts = ""
 
         print("Input a name for your object: ")
         name = input()
 
-        print("Select an object type:\n[1] String | [2] Integer\n")
+        print("Select an object type:\n[1] String | [2] Integer")
         typeOpts = input()
 
         # :troll: time to nest these functions
         def InputStr():
             curStr = ""
+            print("Input some text for your string: ")
             curStr = input()
-            print("String: " + curStr)
+            print("\nString: " + curStr)
 
         def InputInteger():
             curInt = 0
+            print("Input the numbers for your integer: ")
             curInt = input()
-            print("Integer: " + curInt)
+            print("\nInteger: " + curInt)
 
         # No wei python switch case :flushed:
         match (typeOpts):
-            case 1:
+            case "1":
+                type = "String"
                 InputStr()
-            case 2:
+            case "2":
+                type = "Integer"
                 InputInteger()
+
+        print("Name: " + name + "\nType: " + type)
+
+# Woohoo Math
+class Math:
+    def Add(a, b): return a + b
+    def Subtract(a, b): return a - b
+    def Multiply(a, b): return a * b
+    def Divide(a, b): return a / b
 
 def Main():
     # Get the goddamn version
-    OutputVersion("V-Script (PY)", "1.1", True)
+    OutputVersion("V-Script (PY)", "1.15", True)
     # Testing if this works
-    Utility.SysOut.lnStr("Hello World!")
+    Utility.ObjectCreator()
 Main()
